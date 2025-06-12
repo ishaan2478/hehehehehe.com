@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Love Question 1</title>
+  <link rel="stylesheet" href="question1.css" />
+</head>
+<body>
+  <h1 id="questionText">Kya app mujhe kabhi choroge? 🥺</h1>
+
+  <!-- Sad Care Bear GIF -->
+  <img
+    src="https://media.tenor.com/Q9VuGIKQqEMAAAAm/love-bear.webp"
+    alt="Sad Care Bear"
+    class="gif"
+  />
+
+  <!-- Buttons -->
+  <div class="button-wrapper">
+    <button id="yesBtn" class="btn">haa jarur😔</button>
+    <button id="noBtn" class="btn">Never ❤️</button>
+  </div>
+
+  <!-- Next button (hidden initially) -->
+  <button id="nextBtn" class="btn" style="display:none; margin-top: 20px;">
+    Next ➡️
+  </button>
+
+  <!-- Boom sound -->
+  <audio id="boomSound" src="https://actions.google.com/sounds/v1/explosions/explosion.ogg"></audio>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const boomSound = document.getElementById("boomSound");
+    const gif = document.querySelector(".gif");
+    const questionText = document.getElementById("questionText");
+    let clickCount = 0;
+
+    yesBtn.addEventListener("click", () => {
+      clickCount++;
+
+      if (clickCount < 5) {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const btnWidth = yesBtn.offsetWidth;
+        const btnHeight = yesBtn.offsetHeight;
+
+        const randomX = Math.floor(Math.random() * (windowWidth - btnWidth));
+        const randomY = Math.floor(Math.random() * (windowHeight - btnHeight));
+
+        yesBtn.style.position = "absolute";
+        yesBtn.style.left = `${randomX}px`;
+        yesBtn.style.top = `${randomY}px`;
+      } else if (clickCount === 5) {
+        document.body.classList.add("screen-shake");
+        boomSound.play();
+        yesBtn.classList.add("shake");
+
+        setTimeout(() => {
+          yesBtn.classList.remove("shake");
+          yesBtn.classList.add("explode");
+        }, 300);
+
+        setTimeout(() => {
+          yesBtn.style.display = "none";
+          document.body.classList.remove("screen-shake");
+        }, 1300);
+      }
+    });
+
+    noBtn.addEventListener("click", () => {
+      gif.src = "https://media.tenor.com/F9R_ZEnN3B4AAAAi/good-afternoon.gif";
+      yesBtn.style.display = "none";
+      noBtn.style.display = "none";
+
+      // Change heading text
+      questionText.textContent = "yeeeeeeee!! ❤️";
+
+      // Show next button
+      nextBtn.style.display = "inline-block";
+    });
+
+    nextBtn.addEventListener("click", () => {
+      // Redirect to question 2 page
+      window.location.href = "question2.html";
+    });
+  </script>
+</body>
+</html>
