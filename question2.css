@@ -1,56 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Question 2</title>
-  <link rel="stylesheet" href="question2.css" />
-</head>
-<body>
-  <h1 id="questionText">app duniya mee sabse jada pyaar kisse krte ho?</h1>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #00bcd4, #7e57c2); /* cyan to purple */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden;
+  padding: 20px;
+}
 
-  <img
-    id="questionGif"
-    class="gif"
-    src="https://media.tenor.com/vknNeIAWurIAAAAm/tkthao219-bear.webp"
-    alt="Bear Gif"
-  />
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  user-select: none;
+}
 
-  <div class="button-wrapper">
-    <button id="kisiOrKoBtn" class="btn">kisi or ko😔</button>
-    <button id="apkoBtn" class="btn">mujhe💖</button>
-  </div>
+.gif {
+  width: 300px;
+  height: auto;
+  margin-bottom: 30px;
+  user-select: none;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
 
- <a href="quesion3.html">  <button id="nextBtn" class="btn" style="display: none; margin-top: 20px;"> Next ➡️</button></button>
+.button-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+}
 
-  <script>
-  const kisiBtn = document.getElementById("kisiOrKoBtn");
-  const apkoBtn = document.getElementById("apkoBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const questionText = document.getElementById("questionText");
-  const questionGif = document.getElementById("questionGif");
+.btn {
+  background-color: #6a1b9a;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(106, 27, 154, 0.5);
+  user-select: none;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
 
-  let kisiClicks = 0;
+.btn:hover {
+  background-color: #4a148c;
+}
 
-  kisiBtn.addEventListener("click", () => {
-    kisiClicks++;
-    kisiBtn.style.opacity = Math.max(0, 1 - kisiClicks * 0.3);
-    if (kisiClicks >= 3) {
-      kisiBtn.style.display = "none";
-    }
-  });
-
-  apkoBtn.addEventListener("click", () => {
-    questionText.textContent = "umaaaaaaah 💋";
-    questionGif.src = "https://media.tenor.com/jkVthFR60pgAAAAm/feliz-cumplea%C3%B1os.webp";
-    kisiBtn.style.display = "none";
-    apkoBtn.style.display = "none";
-    nextBtn.style.display = "inline-block";
-  });
-nextBtn.addEventListener("click", () => {
-  window.location.href = "question3.html";
-});
-</script>
-
-</body>
-</html>
+#nextBtn {
+  margin-top: 20px;
+}
+a {
+  text-decoration: none;
+  color: #d60000;
+}
