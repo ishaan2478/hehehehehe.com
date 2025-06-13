@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  padding: 20px;
+  height: 100vh;
+  background: linear-gradient(135deg, #7f7fd5, #86a8e7); /* cyan + purple */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  text-align: center;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.flowers {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.flower-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flower-img {
+  width: 150px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff4081;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 3px 10px rgba(255, 64, 129, 0.4);
+}
+
+.btn:hover {
+  background-color: #f50057;
+}
+
+.pink-rose {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Explosion effect */
+.explode {
+  animation: explode 1s forwards;
+  transform-origin: center;
+}
+
+@keyframes explode {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3) rotate(720deg);
+    filter: blur(10px);
+  }
+}
+
+/* Screen shake */
+.screen-shake {
+  animation: shakeScreen 0.5s;
+}
+
+@keyframes shakeScreen {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(-8px, 8px); }
+  50% { transform: translate(8px, -8px); }
+  75% { transform: translate(-8px, 8px); }
+}
+p {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #f0f0f0;
+}
+/* Pink rose bounce */
+.rose-bounce {
+  animation: bounceIn 1.5s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Glowing effect for For You button */
+.button-glow {
+  animation: glow 1.2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081;
+  }
+  to {
+    box-shadow: 0 0 20px #f50057, 0 0 30px #f50057;
+  }
+}
