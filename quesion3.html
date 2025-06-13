@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Question 3</title>
+  <link rel="stylesheet" href="question3.css" />
+</head>
+<body>
+  <h1 id="questionText">choose any <p>(tap the button 4 time)</p></h1>
+
+  <div class="flowers">
+    <!-- Left: Red Rose GIF -->
+    <div class="flower-option" id="leftOption">
+      <img src="https://media.tenor.com/JL5hmyVYsXoAAAAM/rose-for-you.gif" alt="Red Rose" class="flower-img" />
+      <button id="leftBtn" class="btn">💖</button>
+    </div>
+
+    <!-- Right: White Rose GIF -->
+    <div class="flower-option" id="rightOption">
+      <img src="https://media.tenor.com/RCYIuGRP0RMAAAAM/white-beauty-rose-white-flowers.gif" alt="White Flower" class="flower-img" />
+      <button id="rightBtn" class="btn">💖</button>
+    </div>
+  </div>
+
+  <!-- Pink Rose + For You -->
+  <div id="ending" style="display: none; flex-direction: column; align-items: center;">
+    <img src="https://media.tenor.com/LLE25G_TwU8AAAAM/beautiful-day.gif" alt="Pink Rose" class="pink-rose" />
+  <button id="forYouBtn" class="btn">For You 🌹</button>
+  </div>
+
+  <audio id="boomSound" src="https://actions.google.com/sounds/v1/explosions/explosion.ogg"></audio>
+
+ <script>
+  const leftBtn = document.getElementById("leftBtn");
+  const rightBtn = document.getElementById("rightBtn");
+  const leftOption = document.getElementById("leftOption");
+  const rightOption = document.getElementById("rightOption");
+  const boomSound = document.getElementById("boomSound");
+  const ending = document.getElementById("ending");
+  const questionText = document.getElementById("questionText");
+  const forYouBtn = document.getElementById("forYouBtn");
+  const pinkRose = document.querySelector(".pink-rose");
+
+  let leftClicks = 0;
+  let rightClicks = 0;
+
+  function checkIfBothDone() {
+    if (leftClicks >= 4 && rightClicks >= 4) {
+      setTimeout(() => {
+        questionText.textContent = "I Love You 💖💝";
+        ending.style.display = "flex";
+        pinkRose.classList.add("rose-bounce");
+        forYouBtn.classList.add("button-glow");
+      }, 1000);
+    }
+  }
+
+  leftBtn.addEventListener("click", () => {
+    leftClicks++;
+    if (leftClicks >= 4) {
+      leftOption.style.display = "none";
+      checkIfBothDone();
+    }
+  });
+
+  rightBtn.addEventListener("click", () => {
+    rightClicks++;
+    if (rightClicks >= 4) {
+      document.body.classList.add("screen-shake");
+      boomSound.play();
+      rightOption.classList.add("explode");
+
+      setTimeout(() => {
+        rightOption.style.display = "none";
+        document.body.classList.remove("screen-shake");
+        checkIfBothDone();
+      }, 1000);
+    }
+  });
+
+  forYouBtn.addEventListener("click", () => {
+    window.location.href = "index.html"; // redirect to index
+  });
+</script>
+
+
+</body>
+</html>
