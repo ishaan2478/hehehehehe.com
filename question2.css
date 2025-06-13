@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Question 2</title>
+  <link rel="stylesheet" href="question2.css" />
+</head>
+<body>
+  <h1 id="questionText">app duniya mee sabse jada pyaar kisse krte ho?</h1>
+
+  <img
+    id="questionGif"
+    class="gif"
+    src="https://media.tenor.com/vknNeIAWurIAAAAm/tkthao219-bear.webp"
+    alt="Bear Gif"
+  />
+
+  <div class="button-wrapper">
+    <button id="kisiOrKoBtn" class="btn">kisi or ko😔</button>
+    <button id="apkoBtn" class="btn">mujhe💖</button>
+  </div>
+
+ <a href="quesion3.html">  <button id="nextBtn" class="btn" style="display: none; margin-top: 20px;"> Next ➡️</button></button>
+
+  <script>
+  const kisiBtn = document.getElementById("kisiOrKoBtn");
+  const apkoBtn = document.getElementById("apkoBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const questionText = document.getElementById("questionText");
+  const questionGif = document.getElementById("questionGif");
+
+  let kisiClicks = 0;
+
+  kisiBtn.addEventListener("click", () => {
+    kisiClicks++;
+    kisiBtn.style.opacity = Math.max(0, 1 - kisiClicks * 0.3);
+    if (kisiClicks >= 3) {
+      kisiBtn.style.display = "none";
+    }
+  });
+
+  apkoBtn.addEventListener("click", () => {
+    questionText.textContent = "umaaaaaaah 💋";
+    questionGif.src = "https://media.tenor.com/jkVthFR60pgAAAAm/feliz-cumplea%C3%B1os.webp";
+    kisiBtn.style.display = "none";
+    apkoBtn.style.display = "none";
+    nextBtn.style.display = "inline-block";
+  });
+nextBtn.addEventListener("click", () => {
+  window.location.href = "question3.html";
+});
+</script>
+
+</body>
+</html>
